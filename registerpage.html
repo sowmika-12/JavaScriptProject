@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ee1d3651cf.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    .king {
+       
+        width:100%;
+        height:100vh;
+        background-image: linear-gradient(rgba(0,0,50,0.8),rgba(21, 69, 49, 0.8)),url(./img2.jpg);
+   
+        background-position:center ;
+        background-size: cover;
+        position: relative;
+    }
+
+    span {
+        display: none;
+    }
+
+    .main {
+        width: 300px;
+        height: 400px;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10%;
+ 
+    }
+
+    .form input {
+        width: 200px;
+        height: 30px;
+    }
+
+    .sign {
+        margin-left: 118px;
+        margin-top: -112px;
+       
+
+
+    }
+  
+        .body{
+            width:100%;
+            height:100vh;
+            background-image: linear-gradient(rgba(0,0,50,0.8),rgba(21, 69, 49, 0.8)),url(./img2.jpg);
+            background-position:center ;
+            background-size: cover;
+            position: relative;
+        }
+        .a{
+            border-radius: 80px;
+            
+            margin-left:20px;
+            margin-top:-10px; 
+        }
+
+        .s{
+
+border-radius: 80px;
+text-decoration: none;
+
+        }
+       
+    
+</style>
+
+<body>
+    <center>
+        <div class="king">
+            <div class="main">
+                <form class="form">
+                    <h1 id="title">Register</h1>
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Username" required>
+                    
+                    <br>
+                    <br>
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                    <br>
+                    <br>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="password" required>
+                    <br>
+                    <br>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="re-enter password" required class="one">
+                    <br>
+                    <span>Re-enter properly</span>
+                    <br>
+                    <br>
+                    <input type="submit" style="width:80px;margin-right: 11px;border-radius: 40px;">
+
+                </form>
+            </div>
+            <br>
+            <div class="a">
+           
+                <button style="width:100px;height:40px;text-decoration:none">
+                        <a href="./loginpage.html"  class="s">Login</a>
+                </button>
+            </div>
+            </div>
+        </div>
+    </center>
+    <script>
+        var d = document.forms;
+        console.log(d[0])
+
+        var arr = [];
+        d[0].addEventListener("submit", (e) => {
+            e.preventDefault();
+            obj = {
+                user: e.target[0].value,
+                email: e.target[1].value,
+                pass: e.target[2].value,
+                passe: e.target[3].value
+            }
+            if (e.target[2].value !== e.target[3].value) {
+                var key = document.getElementsByTagName("span");
+                key[0].style.display = "inline";
+                key[0].style.color = "red";
+
+
+
+            }
+            console.log(obj)
+            arr.push(obj)
+
+            console.log(arr)
+            e.target[0].value = "",
+                e.target[1].value = "",
+                e.target[2].value = "",
+                e.target[3].value = ""
+            localStorage.setItem("user", JSON.stringify(arr));
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

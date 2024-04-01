@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    span{
+        display: none;
+    }
+    .sow{
+        width:800px;
+        height:700px;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+    height:100vh;
+    background-image: url(./pexels-daniel-putzer-633409.jpg);
+  
+    background-size: cover;
+    position: relative;
+   
+    }
+
+  
+   .a{
+    color: antiquewhite;
+   font-size: 60px;
+   }
+   .fm{
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
+
+   }
+   .sub{
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+   }
+   
+
+</style>
+<body>
+    <!-- <h1 class="a">Login </h1> -->
+    <!-- <center> <div class="sow"> -->
+        
+        <center> <div class="sow">
+        <form>
+
+            <p    style="color: white; font-size:20px;"> Note:Login with same username and password which you have enrolled in registration page.</p>
+
+
+            <h1 class="a">Login </h1>
+            <!-- <i class="fa-solid fa-user"></i> -->
+<!-- 
+            <center> <div class="sow"> -->
+            <input type="text" placeholder="username" required class="fm" >
+            <br>
+            <span>check the login details</span>
+        
+            <br>
+            <!-- <i class="fa-solid fa-lock"></i> -->
+            <input type="password" placeholder="password" required  class="fm">
+            <br>
+            <span>wrong password</span>
+            <br>
+            <br>
+         
+            <input type="submit" class="sub" >
+
+   
+        </form>
+    </div>
+    </center>
+    <script>
+        var d = document.forms;
+
+        d[0].addEventListener("submit", function(e) {
+            e.preventDefault();
+            var sign = localStorage.getItem("user") || "[]"; 
+            var pg = JSON.parse(sign);
+            console.log(pg);
+
+            var username = e.target[0].value;
+            var password = e.target[1].value;
+            var credentialsMatch = false;
+
+            for (let i = 0; i < pg.length; i++) {
+                let res = pg[i].user;
+                let pas = pg[i].pass;
+
+                if (username === res && password === pas) {
+                    credentialsMatch = true;
+                    break;
+                }
+            }
+
+            if (!credentialsMatch) {
+                let span = document.getElementsByTagName("span");
+                span[0].style.display = "inline";
+                span[0].style.color = "red";
+            } else {
+                window.location.assign("rules.html");
+            }
+
+            e.target[0].value = "";
+            e.target[1].value = "";
+        });
+    </script>
+    
+</body>
+</html>
